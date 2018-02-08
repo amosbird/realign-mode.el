@@ -1,0 +1,47 @@
+* Realign Mode
+
+  Global minor mode that realign windows smartly.
+
+* Screenshots
+
+[[https://raw.githubusercontent.com/amosbird/realign-mode.el/master/img/s-1.png]]
+[[https://raw.githubusercontent.com/amosbird/realign-mode.el/master/img/s-2.png]]
+
+* Installation
+
+** Manual installation
+
+First, download =realign-mode.el= in your emacs load path.
+
+Then add this to your configuration file:
+
+#+begin_src emacs-lisp
+(require 'realign-mode)
+#+end_src
+
+** Installation via use-package
+
+If you use [[https://github.com/jwiegley/use-package][use-package]], simply add the following to your init file.
+
+#+BEGIN_SRC elisp
+(use-package realign-mode :commands realign-mode)
+#+END_SRC
+
+* Activation
+
+** On-the-fly
+
+Simply type =M-x realign-mode= in any buffer.
+
+** Permanent
+
+To make this permanent, add this to your emacs configuration file:
+
+#+begin_src emacs-lisp
+(require realign-mode)
+(realign-mode +1)
+#+end_src
+
+* License
+
+None.
