@@ -95,6 +95,7 @@ mode won't activate in that window."
 
 (defun realign-windows (&optional frame)
   "Realign all windows in FRAME, if nil, current selected frame."
+  (interactive)
   (let ((windows (window-list frame t)))
     (mapc #'realign-window
           (mapcar #'realign-struct
