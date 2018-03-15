@@ -1,4 +1,4 @@
-;;; realign.el --- Realign window smartly -*- lexical-binding: t; -*-
+;;; realign-mode.el --- Realign window smartly -*- lexical-binding: t; -*-
 ;;
 ;; Author: Amos Bird <amosbird@gmail.com>
 ;; Version: 1.0.0
