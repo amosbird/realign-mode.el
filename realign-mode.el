@@ -125,9 +125,8 @@ mode won't activate in that window."
 (defun realign-calculate-appropriate-margin-widths (window)
   "Calculate appropriate window margins for given WINDOW."
   (let* ((window-width (window-total-width window))
-         (n (if (or (window-full-width-p window) (window-at-side-p window 'left))
-                (/ window-width 4)
-              4))
+         ;; (n (if (or (window-full-width-p window) (window-at-side-p window 'left))
+         (n (if (window-full-width-p window) (/ window-width 4) 4)) ;; left 4 for git-gutter
          (left-width n)
          (right-width 0))
     `(,left-width . ,right-width)))
