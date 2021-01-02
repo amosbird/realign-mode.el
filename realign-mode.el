@@ -37,6 +37,7 @@
 (eval-when-compile
   (require 'cl-lib))
 (require 'face-remap)
+(require 'seq)
 (require 'subr-x)
 
 (defgroup realign-mode nil
@@ -55,6 +56,14 @@
   "List of predicate functions.
 Each is run with current window and if it returns 't the
 mode won't activate in that window."
+  :group 'realign-mode
+  :type '(list function))
+
+(defcustom realign-need-padding-predicates
+  (list #'window-full-width-p)
+  "List of predicate functions.
+Each is run with current window and if it returns 'nil the
+left marginal area won't be padded in that window."
   :group 'realign-mode
   :type '(list function))
 
@@ -125,7 +134,8 @@ mode won't activate in that window."
 (defun realign-need-padding-p (window)
   "Check if left padding is needed for given WINDOW."
   (and (not (equal (frame-parameter nil 'name) "popup"))
-       (window-full-width-p window)))
+       (seq-every-p (lambda (predicate) (funcall predicate window))
+                    realign-need-padding-predicates)))
 
 (defun realign-calculate-appropriate-margin-widths (window)
   "Calculate appropriate window margins for given WINDOW."
